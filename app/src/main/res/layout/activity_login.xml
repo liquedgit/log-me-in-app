@@ -51,4 +51,15 @@
         android:textSize="18sp"
         android:layout_centerInParent="true"/>
 
+    <Button
+        android:id="@+id/registerBtn"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/loginBtn"
+        android:layout_marginTop="15dp"
+        android:text="Register"
+        />
+
 </RelativeLayout>
