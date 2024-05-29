@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         RootBeer rootBeer = new RootBeer(this);
         if(rootBeer.isRooted()){
             Toast.makeText(this, "Application is runned on root device", Toast.LENGTH_SHORT).show();
+            finish();
         }
         startBtn = findViewById(R.id.startBtn);
         endPointET = findViewById(R.id.baseUrlET);

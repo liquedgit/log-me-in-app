@@ -61,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(JSONObject response) {
                             try{
-                                String msg = response.getString("Message");
+                                String msg = response.getString("message");
                                 Toast.makeText(RegisterActivity.this, msg , Toast.LENGTH_SHORT).show();
                                 startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                                 finish();

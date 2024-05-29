@@ -19,34 +19,36 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+
 public class EndpointHelper {
     private static EndpointHelper instance;
     private String baseUrl;
 
     private EndpointHelper(String url){
-        this.baseUrl = "http://"+url;
+        this.baseUrl = "https://"+url;
     }
 
     public static EndpointHelper GetEndpointHelperInstance(){
         if(instance == null){
-            instance = new EndpointHelper("android.testing.net");
+            instance = new EndpointHelper("logmein.chall.liquedgit.com");
         }
         return instance;
     }
 
+
+
     public void setBaseUrl(String baseUrl) {
-        this.baseUrl = "http://"+baseUrl;
+        this.baseUrl = "https://"+baseUrl;
     }
 
 
     public void MakeRequest(Context context,int method, String endpoint, VolleyCallback callback){
         RequestQueue requestQueue = Volley.newRequestQueue(context);
-            StringRequest mStringRequest = new StringRequest(method, this.baseUrl + endpoint, new Response.Listener<String>() {
+            JsonObjectRequest mJsonRequest = new JsonObjectRequest(method, this.baseUrl + endpoint,null, new Response.Listener<JSONObject>() {
                 @Override
-                public void onResponse(String response) {
+                public void onResponse(JSONObject response) {
                     callback.onSuccess(response);
                 }
-
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
@@ -64,7 +66,7 @@ public class EndpointHelper {
                 }
             };;
 
-        requestQueue.add(mStringRequest);
+        requestQueue.add(mJsonRequest);
     }
 
     public void MakeRequest(Context context, int method, String endpoint, JSONObject jsonObject, VolleyCallback callback){
@@ -92,6 +94,8 @@ public class EndpointHelper {
         };
         requestQueue.add(mJsonObjectRequest);
     }
+
+
 
 
 }
